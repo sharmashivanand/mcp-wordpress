@@ -4,6 +4,7 @@
   "description": "A VS Code extension implementing MCP server for WordPress integration",
   "version": "0.1.0",
   "publisher": "sharmashivanand",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/sharmashivanand/mcp-wordpress.git"
