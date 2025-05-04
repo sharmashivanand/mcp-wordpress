@@ -1,0 +1,95 @@
+{
+  "name": "mcp-wordpress",
+  "displayName": "WordPress MCP",
+  "description": "A VS Code extension implementing MCP server for WordPress integration",
+  "version": "0.1.0",
+  "publisher": "sharmashivanand",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sharmashivanand/mcp-wordpress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sharmashivanand/mcp-wordpress/issues"
+  },
+  "homepage": "https://github.com/sharmashivanand/mcp-wordpress",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mcp-wordpress.connect",
+        "title": "WordPress MCP: Connect to WordPress"
+      },
+      {
+        "command": "mcp-wordpress.queryDatabase",
+        "title": "WordPress MCP: Query Database"
+      },
+      {
+        "command": "mcp-wordpress.showConfig",
+        "title": "WordPress MCP: Show WordPress Configuration"
+      }
+    ],
+    "contextModelProviders": [
+      {
+        "name": "wordpress",
+        "description": "WordPress configuration and context information"
+      }
+    ],
+    "contextModelQueries": [
+      {
+        "provider": "wordpress",
+        "pattern": "What is the WordPress database information",
+        "examples": [
+          "What's the database name in wp-config.php?",
+          "What is the WordPress database user?",
+          "What table prefix is used in WordPress?"
+        ]
+      },
+      {
+        "provider": "wordpress",
+        "pattern": "WordPress theme and plugin information",
+        "examples": [
+          "What theme is active in this WordPress site?",
+          "List active plugins in this WordPress site",
+          "What custom post types are available?"
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "dependencies": {
+    "mysql2": "^3.6.0",
+    "vscode-uri": "^3.0.7"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "20.2.5",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4"
+  }
+}
